@@ -4,6 +4,9 @@ export default function Navigation() {
   return (
     <nav
       style={{
+        position: "sticky",
+        top: 0,
+        zIndex: 1000,
         display: "flex",
         justifyContent: "center",
         gap: "20px",

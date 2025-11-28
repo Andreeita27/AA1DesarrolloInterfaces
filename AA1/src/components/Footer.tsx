@@ -8,7 +8,7 @@ export default function Footer() {
       marginTop: "auto",
       color: "#666"
     }}>
-      <p>AA1 Diseño de Interfaces - Andrea Fernández de la Rosa</p>
+      <p>AA1 Desarrollo de Interfaces - Andrea Fernández de la Rosa</p>
     </footer>
   );
 }
