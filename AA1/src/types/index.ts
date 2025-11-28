@@ -16,3 +16,15 @@ export interface Location {
 export interface CharacterResponse {
   results: Character[];
 }
+
+export interface LocationData {
+  id: number;
+  name: string;
+  type: string;
+  dimension: string;
+  residents: string[];
+}
+
+export interface LocationResponse {
+  results: LocationData[];
+}

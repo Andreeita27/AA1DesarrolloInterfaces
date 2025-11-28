@@ -17,11 +17,22 @@ export default function Navigation() {
       <NavLink
         to="/"
         style={({ isActive }) => ({
-          color: isActive ? "#ffffffff" : "white",
+          color: isActive ? "#ffffffff" : "black",
           textDecoration: "none",
         })}
       >
         Inicio
+      </NavLink>
+      <NavLink
+        to="/locations"
+        style={({ isActive }) => ({
+          color: isActive ? "#ffffffff" : "black",
+            textDecoration: "none",
+            fontWeight: "bold",
+            fontSize: "1.1rem"
+        })}
+      >
+        Ubicaciones
       </NavLink>
     </nav>
   );

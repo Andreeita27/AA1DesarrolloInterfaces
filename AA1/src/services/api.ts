@@ -1,4 +1,4 @@
-import type { Character, CharacterResponse } from "../types";
+import type { Character, CharacterResponse, LocationResponse } from "../types";
 
 const BASE_URL = "https://rickandmortyapi.com/api";
 
@@ -21,6 +21,16 @@ export async function getCharacterById(id: string): Promise<Character> {
 
   if (!response.ok) {
     throw new Error("Error al obtener el detalle");
+  }
+
+  return await response.json();
+}
+
+export async function getLocations(): Promise<LocationResponse> {
+  const response = await fetch(`${BASE_URL}/location`);
+
+  if (!response.ok) {
+    throw new Error("Error al obtener las ubicaciones");
   }
 
   return await response.json();
