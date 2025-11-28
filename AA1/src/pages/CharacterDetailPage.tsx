@@ -22,46 +22,76 @@ export default function CharacterDetailPage() {
     }
   }, [id]);
 
-  if (loading) return <div style={{ color: "white", textAlign: "center", marginTop: "50px" }}>Cargando detalles...</div>;
-  
-  if (!character) return <div style={{ color: "white", textAlign: "center" }}>Personaje no encontrado</div>;
+  if (loading) return <div style={{ textAlign: "center", marginTop: "50px" }}>Cargando...</div>;
+  if (!character) return <div style={{ textAlign: "center" }}>Personaje no encontrado</div>;
 
   return (
-    <div style={{ padding: "40px", backgroundColor: "#24282F", minHeight: "100vh", color: "white", textAlign: "center" }}>
+    <div style={{ 
+      padding: "40px", 
+      backgroundColor: "var(--bg-color)", 
+      minHeight: "100vh", 
+      fontFamily: "Segoe UI, sans-serif" 
+    }}>
       
       <div style={{ 
-          maxWidth: "600px", 
+          maxWidth: "700px", 
           margin: "0 auto", 
-          backgroundColor: "#3C3E44", 
-          padding: "30px", 
-          borderRadius: "15px",
-          boxShadow: "0 4px 10px rgba(0,0,0,0.5)"
+          backgroundColor: "var(--card-bg)", 
+          borderRadius: "20px",
+          padding: "40px",
+          boxShadow: "0 10px 30px rgba(0,0,0,0.1)", 
+          border: "1px solid var(--border-color)",
+          textAlign: "center"
       }}>
+        
         <img 
           src={character.image} 
           alt={character.name} 
-          style={{ width: "200px", borderRadius: "50%", border: "4px solid #FF9800", marginBottom: "20px" }} 
+          style={{ 
+            width: "250px", 
+            height: "250px", 
+            borderRadius: "50%",
+            objectFit: "cover", 
+            border: "5px solid var(--accent-color)",
+            marginBottom: "20px"
+          }} 
         />
-        <h1 style={{ fontSize: "2.5rem", color: "#FF9800", marginBottom: "10px" }}>{character.name}</h1>
-        
-        <div style={{ fontSize: "1.2rem", lineHeight: "1.8", textAlign: "left", paddingLeft: "20px" }}>
-          <p><strong>Estado:</strong> {character.status === "Alive" ? "🟢 Vivo" : "🔴 Muerto"}</p>
-          <p><strong>Especie:</strong> {character.species}</p>
-          <p><strong>Género:</strong> {character.gender}</p>
-          <p><strong>Ubicación:</strong> {character.location.name}</p>
+
+        <h1 style={{ 
+            fontSize: "2.5rem", 
+            color: "var(--accent-color)", 
+            margin: "0 0 30px 0",
+        }}>
+            {character.name}
+        </h1>
+          
+        <div style={{ 
+            display: "grid", 
+            gridTemplateColumns: "1fr 1fr", 
+            gap: "20px",
+            marginBottom: "40px",
+            textAlign: "left",
+            backgroundColor: "rgba(0,0,0,0.05)",
+            padding: "20px",
+            borderRadius: "10px"
+        }}>
+            <p style={{ margin: "5px 0" }}><strong>Estado:</strong> {character.status === "Alive" ? "🟢 Vivo" : "🔴 Muerto"}</p>
+            <p style={{ margin: "5px 0" }}><strong>Especie:</strong> {character.species}</p>
+            <p style={{ margin: "5px 0" }}><strong>Género:</strong> {character.gender}</p>
+            <p style={{ margin: "5px 0" }}><strong>Ubicación:</strong> {character.location.name}</p>
         </div>
 
         <Link to="/" style={{ 
             display: "inline-block", 
-            marginTop: "30px", 
-            padding: "10px 20px", 
-            backgroundColor: "#FF9800", 
+            padding: "12px 30px", 
+            backgroundColor: "var(--highlight-color)", 
             color: "white", 
-            textDecoration: "none", 
-            borderRadius: "5px",
-            fontWeight: "bold"
+            borderRadius: "50px",
+            fontWeight: "bold",
+            textDecoration: "none",
+            transition: "transform 0.2s"
         }}>
-          Volver al inicio
+        Volver al listado
         </Link>
       </div>
     </div>

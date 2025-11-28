@@ -8,7 +8,7 @@ export default function Navigation() {
         justifyContent: "center",
         gap: "20px",
         padding: "20px",
-        backgroundColor: "#202329",
+        backgroundColor: "#00ff62ff",
         color: "white",
         fontSize: "18px",
         fontWeight: "bold",
@@ -17,7 +17,7 @@ export default function Navigation() {
       <NavLink
         to="/"
         style={({ isActive }) => ({
-          color: isActive ? "#FF9800" : "white",
+          color: isActive ? "#ffffffff" : "white",
           textDecoration: "none",
         })}
       >
