@@ -2,10 +2,13 @@ import type { Character, CharacterResponse } from "../types";
 
 const BASE_URL = "https://rickandmortyapi.com/api";
 
-export async function getCharacters(page: number = 1): Promise<CharacterResponse> {
-  const response = await fetch(`${BASE_URL}/character?page=${page}`);
+export async function getCharacters(page: number = 1, name: string = ""): Promise<CharacterResponse> {
+  const response = await fetch(`${BASE_URL}/character?page=${page}&name=${name}`);
   
   if (!response.ok) {
+    if (response.status === 404) {
+      return { results: [], info: { count: 0, pages: 0, next: null, prev: null } } as any;
+    }
     throw new Error("Error al obtener los personajes");
   }
 
