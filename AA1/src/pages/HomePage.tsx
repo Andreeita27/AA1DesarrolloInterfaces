@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { getCharacters } from "../services/api";
 import type { Character } from "../types";
 import CharacterCard from "../components/CharacterCard";
+import SearchBar from "../components/SearchBar";
 
 export default function HomePage() {
   const [characters, setCharacters] = useState<Character[]>([]);
@@ -30,26 +31,7 @@ export default function HomePage() {
         Personajes Rick y Morty
       </h1>
 
-      <div style={{ marginBottom: "40px", textAlign: "center" }}>
-        <input
-          type="text"
-          placeholder="Buscar personaje..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          style={{
-            padding: "12px 20px",
-            fontSize: "16px",
-            width: "100%",
-            maxWidth: "400px",
-            borderRadius: "50px",
-            border: "2px solid var(--accent-color)",
-            backgroundColor: "var(--card-bg)",
-            color: "var(--text-color)",
-            outline: "none",
-            textAlign: "center"
-          }}
-        />
-      </div>
+      <SearchBar value={searchTerm} onChange={setSearchTerm} />
 
       {loading && <p style={{ textAlign: "center", fontSize: "1.2rem", color: "var(--text-color)" }}>Cargando...</p>}
 
