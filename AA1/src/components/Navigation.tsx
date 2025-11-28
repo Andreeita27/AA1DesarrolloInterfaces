@@ -17,7 +17,7 @@ export default function Navigation() {
       <NavLink
         to="/"
         style={({ isActive }) => ({
-          color: isActive ? "#ffffffff" : "black",
+          color: isActive ? "rgba(0, 0, 0, 1)" : "white",
           textDecoration: "none",
         })}
       >
@@ -26,7 +26,7 @@ export default function Navigation() {
       <NavLink
         to="/locations"
         style={({ isActive }) => ({
-          color: isActive ? "#ffffffff" : "black",
+          color: isActive ? "#000000ff" : "white",
             textDecoration: "none",
             fontWeight: "bold",
             fontSize: "1.1rem"
