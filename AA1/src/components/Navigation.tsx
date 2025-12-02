@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom";
+import ThemeToggle from "./ThemeToggle";
 
 export default function Navigation() {
   return (
@@ -7,23 +8,28 @@ export default function Navigation() {
         position: "sticky",
         top: 0,
         zIndex: 1000,
-        display: "flex",
-        justifyContent: "center",
-        gap: "20px",
-        padding: "20px",
-        backgroundColor: "#00ff62ff",
-        color: "white",
-        fontSize: "18px",
-        fontWeight: "bold",
+        backgroundColor: "var(--highlight-color)",
+        width: "100%"
       }}
     >
+      <div
+        style={{
+          maxWidth: "1000px",
+          margin: "0 auto",
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          padding: "15px 40px",
+        }}
+      >
       <NavLink
         to="/"
         style={({ isActive }) => ({
-          color: isActive ? "#000000ff" : "white",
-          textDecoration: "none",
+          display: "flex",
+          fontSize: "1.1rem",
           fontWeight: "bold",
-          fontSize: "1.1rem"
+          color: isActive ? "#000000ff" : "white",
+          textDecoration: "none"
         })}
       >
         Inicio
@@ -31,10 +37,11 @@ export default function Navigation() {
       <NavLink 
         to="/characters" 
         style={({ isActive }) => ({
+          display: "flex",
+          fontSize: "1.1rem",
+          fontWeight: "bold",
             color: isActive ? "#000000ff" : "white",
-            textDecoration: "none", 
-            fontWeight: "bold",
-            fontSize: "1.1rem"
+            textDecoration: "none",
         })}
       >
           Personajes
@@ -42,14 +49,17 @@ export default function Navigation() {
       <NavLink
         to="/locations"
         style={({ isActive }) => ({
+          display: "flex",
+          fontSize: "1.1rem",
+          fontWeight: "bold",
           color: isActive ? "#000000ff" : "white",
-            textDecoration: "none",
-            fontWeight: "bold",
-            fontSize: "1.1rem"
+            textDecoration: "none"
         })}
       >
         Ubicaciones
       </NavLink>
+      <ThemeToggle />
+    </div>
     </nav>
   );
 }
