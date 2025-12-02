@@ -11,10 +11,11 @@ export default function CharactersPage() {
  
     const [searchTerm, setSearchTerm] = useState("");
     const [sortOrder, setSortOrder] = useState<"asc" | "desc">("asc");
+    const [statusFilter, setStatusFilter] = useState("");
 
     useEffect(() => {
         setLoading(true);
-        getCharacters(1, searchTerm)
+        getCharacters(1, searchTerm, statusFilter)
         .then((data) => {
             setCharacters(data.results || []);
             setLoading(false);
@@ -24,7 +25,7 @@ export default function CharactersPage() {
             setError("Error al cargar los personajes");
             setLoading(false);
         });
-    }, [searchTerm]);
+    }, [searchTerm, statusFilter]);
 
 const sortedCharacters = [...characters].sort((a, b) => {
     if (sortOrder === "asc") {
@@ -45,6 +46,8 @@ const sortedCharacters = [...characters].sort((a, b) => {
                 onChange={setSearchTerm}
                 sortOrder={sortOrder}
                 onSortChange={setSortOrder}
+                filterStatus={statusFilter}
+                onFilterChange={setStatusFilter}
             />
 
             {loading && <p style={{ textAlign: "center", fontSize: "1.2rem", color: "var(--text-color)" }}>Cargando...</p>}

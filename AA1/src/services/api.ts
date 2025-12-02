@@ -2,8 +2,8 @@ import type { Character, CharacterResponse, LocationResponse } from "../types";
 
 const BASE_URL = "https://rickandmortyapi.com/api";
 
-export async function getCharacters(page: number = 1, name: string = ""): Promise<CharacterResponse> {
-  const response = await fetch(`${BASE_URL}/character?page=${page}&name=${name}`);
+export async function getCharacters(page: number = 1, name: string = "", status: string = ""): Promise<CharacterResponse> {
+  const response = await fetch(`${BASE_URL}/character?page=${page}&name=${name}&status=${status}`);
   
   if (!response.ok) {
     if (response.status === 404) {
