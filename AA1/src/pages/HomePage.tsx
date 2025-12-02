@@ -1,54 +1,54 @@
-import { useEffect, useState } from "react";
-import { getCharacters } from "../services/api";
-import type { Character } from "../types";
-import CharacterCard from "../components/CharacterCard";
-import SearchBar from "../components/SearchBar";
+import { Link } from "react-router-dom";
 
 export default function HomePage() {
-  const [characters, setCharacters] = useState<Character[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
- 
-  const [searchTerm, setSearchTerm] = useState("");
-
-  useEffect(() => {
-    setLoading(true);
-    getCharacters(1, searchTerm)
-      .then((data) => {
-        setCharacters(data.results || []);
-        setLoading(false);
-        setError("");
-      })
-      .catch(() => {
-        setError("Error al cargar los personajes");
-        setLoading(false);
-      });
-  }, [searchTerm]);
-
   return (
-    <div style={{ padding: "40px", backgroundColor: "var(--bg-color)", minHeight: "100vh" }}>
-      <h1 style={{ textAlign: "center", color: "var(--highlight-color)", marginBottom: "30px", fontSize: "2.5rem" }}>
-        Personajes Rick y Morty
+    <div style={{ 
+      padding: "40px", 
+      backgroundColor: "var(--bg-color)", 
+      minHeight: "calc(100vh - 200px)",
+      textAlign: "center",
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "center",
+      alignItems: "center"
+    }}>
+      <h1 style={{ fontSize: "3rem", color: "var(--highlight-color)", marginBottom: "20px" }}>
+        Bienvenido
       </h1>
+      <p style={{ fontSize: "1.2rem", color: "var(--text-color)", maxWidth: "600px", marginBottom: "40px" }}>
+        Explora el universo de Rick y Morty.
+      </p>
 
-      <SearchBar value={searchTerm} onChange={setSearchTerm} />
+      <div style={{ display: "flex", gap: "20px", flexWrap: "wrap", justifyContent: "center" }}>
+        <Link to="/characters" style={{
+          padding: "20px 40px",
+          backgroundColor: "var(--card-bg)",
+          border: "2px solid var(--accent-color)",
+          borderRadius: "15px",
+          textDecoration: "none",
+          color: "var(--text-color)",
+          fontWeight: "bold",
+          fontSize: "1.2rem",
+          transition: "transform 0.2s",
+          boxShadow: "0 4px 10px rgba(0,0,0,0.1)"
+        }}>
+          👽 Ver Personajes
+        </Link>
 
-      {loading && <p style={{ textAlign: "center", fontSize: "1.2rem", color: "var(--text-color)" }}>Cargando...</p>}
-
-      {error && <p style={{ textAlign: "center", color: "red" }}>{error}</p>}
-
-      {!loading && !error && characters.length === 0 && (
-        <div style={{ textAlign: "center", marginTop: "20px" }}>
-          <p style={{ fontSize: "1.5rem", color: "var(--text-color)" }}>
-            No se encontró a nadie.
-          </p>
-        </div>
-      )}
-
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(240px, 1fr))", gap: "30px" }}>
-        {characters.map((char) => (
-          <CharacterCard key={char.id} character={char} />
-        ))}
+        <Link to="/locations" style={{
+          padding: "20px 40px",
+          backgroundColor: "var(--card-bg)",
+          border: "2px solid var(--highlight-color)",
+          borderRadius: "15px",
+          textDecoration: "none",
+          color: "var(--text-color)",
+          fontWeight: "bold",
+          fontSize: "1.2rem",
+          transition: "transform 0.2s",
+          boxShadow: "0 4px 10px rgba(0,0,0,0.1)"
+        }}>
+          🪐 Ver Ubicaciones
+        </Link>
       </div>
     </div>
   );

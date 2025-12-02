@@ -20,12 +20,25 @@ export default function Navigation() {
       <NavLink
         to="/"
         style={({ isActive }) => ({
-          color: isActive ? "rgba(0, 0, 0, 1)" : "white",
+          color: isActive ? "#000000ff" : "white",
           textDecoration: "none",
+          fontWeight: "bold",
+          fontSize: "1.1rem"
         })}
       >
         Inicio
       </NavLink>
+      <NavLink 
+        to="/characters" 
+        style={({ isActive }) => ({
+            color: isActive ? "#000000ff" : "white",
+            textDecoration: "none", 
+            fontWeight: "bold",
+            fontSize: "1.1rem"
+        })}
+      >
+          Personajes
+        </NavLink>
       <NavLink
         to="/locations"
         style={({ isActive }) => ({

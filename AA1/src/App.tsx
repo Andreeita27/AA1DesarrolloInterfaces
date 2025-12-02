@@ -3,6 +3,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Navigation from "./components/Navigation";
 import HomePage from "./pages/HomePage";
+import CharactersPage from "./pages/CharactersPage";
 import CharacterDetailPage from "./pages/CharacterDetailPage";
 import LocationsPage from "./pages/LocationsPage";
 
@@ -15,6 +16,7 @@ export default function App() {
         <Navigation />
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/characters" element={<CharactersPage />} />
           <Route path="/character/:id" element={<CharacterDetailPage />} />
           <Route path="/locations" element={<LocationsPage />} />
         </Routes>
