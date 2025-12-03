@@ -3,8 +3,9 @@ type props = {
   onChange: (newValue: string) => void;
   sortOrder: "asc" | "desc";
   onSortChange: (newOrder: "asc" | "desc") => void;
-  filterStatus: string;
+  filterValue: string;
   onFilterChange: (newStatus: string) => void;
+  filterOptions: { label: string; value: string }[];
 };
 
 export default function SearchBar({ 
@@ -12,8 +13,9 @@ export default function SearchBar({
   onChange, 
   sortOrder, 
   onSortChange,
-  filterStatus,
-  onFilterChange
+  filterValue,
+  onFilterChange,
+  filterOptions
 }: props) {
 
   const inputStyle = {
@@ -56,14 +58,14 @@ export default function SearchBar({
         }}
       />
       <select
-        value={filterStatus}
+        value={filterValue}
         onChange={(e) => onFilterChange(e.target.value)}
         style={inputStyle}
       >
-        <option value="">Todos los estados</option>
-        <option value="alive">🟢 Vivo</option>
-        <option value="dead">🔴 Muerto</option>
-        <option value="unknown">⚪ Desconocido</option>
+        <option value="">Todos</option>
+        {filterOptions.map((opt) => (
+            <option key={opt.value} value={opt.value}>{opt.label}</option>
+        ))}
       </select>
       <select
         value={sortOrder}

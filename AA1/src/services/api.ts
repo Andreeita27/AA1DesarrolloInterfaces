@@ -26,8 +26,8 @@ export async function getCharacterById(id: string): Promise<Character> {
   return await response.json();
 }
 
-export async function getLocations(): Promise<LocationResponse> {
-  const response = await fetch(`${BASE_URL}/location`);
+export async function getLocations(page: number = 1,name: string = "",type: string = ""): Promise<LocationResponse> {
+  const response = await fetch(`${BASE_URL}/location?page=${page}&name=${name}&type=${type}`);
 
   if (!response.ok) {
     throw new Error("Error al obtener las ubicaciones");

@@ -46,8 +46,13 @@ const sortedCharacters = [...characters].sort((a, b) => {
                 onChange={setSearchTerm}
                 sortOrder={sortOrder}
                 onSortChange={setSortOrder}
-                filterStatus={statusFilter}
+                filterValue={statusFilter}
                 onFilterChange={setStatusFilter}
+                filterOptions={[
+                    { label: "🟢 Vivo", value: "alive" },
+                    { label: "🔴 Muerto", value: "dead" },
+                    { label: "⚪ Desconocido", value: "unknown" }
+                ]}
             />
 
             {loading && <p style={{ textAlign: "center", fontSize: "1.2rem", color: "var(--text-color)" }}>Cargando...</p>}
