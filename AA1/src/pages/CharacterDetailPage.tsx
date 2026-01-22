@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { getCharacterById } from "../services/api";
 import type { Character } from "../types";
+import StatusMessage from "../components/StatusMessage";
 
 export default function CharacterDetailPage() {
   const { id } = useParams();
@@ -28,27 +29,9 @@ export default function CharacterDetailPage() {
       });
   }, [id]);
 
-  if (loading) {
-    return (
-      <div style={{ textAlign: "center", marginTop: "50px" }}> Cargando...</div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div style={{ textAlign: "center", marginTop: "50px", color: "red" }}>
-        {error}
-      </div>
-    );
-  }
-
-  if (!character) {
-    return (
-      <div style={{ textAlign: "center", marginTop: "50px" }}>
-        Personaje no encontrado
-      </div>
-    );
-  }
+  if (loading) return <StatusMessage text="Cargando..." type="loading" />;
+  if (error) return <StatusMessage text={error} type="error" />;
+  if (!character) return <StatusMessage text="Personaje no encontrado" type="empty" />;
 
   return (
     <div
