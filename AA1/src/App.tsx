@@ -9,7 +9,7 @@ import LocationsPage from "./pages/LocationsPage";
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter> {/* Habilita la navegación sin recargar pagina*/}
       <div style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
         
         <Header />

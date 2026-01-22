@@ -2,6 +2,7 @@ import type { Character, CharacterResponse, LocationResponse } from "../types";
 
 const BASE_URL = "https://rickandmortyapi.com/api";
 
+// Obtiene personajes con paginación, búsqueda y filtro por estado
 export async function getCharacters(page: number = 1, name: string = "", status: string = ""): Promise<CharacterResponse> {
   const response = await fetch(`${BASE_URL}/character?page=${page}&name=${name}&status=${status}`);
   
@@ -15,7 +16,7 @@ export async function getCharacters(page: number = 1, name: string = "", status:
   return await response.json();
 }
 
-
+// Personaje concreto por ID para el detalle
 export async function getCharacterById(id: string): Promise<Character | null> {
   const response = await fetch(`${BASE_URL}/character/${id}`);
 
@@ -29,6 +30,7 @@ export async function getCharacterById(id: string): Promise<Character | null> {
   return await response.json();
 }
 
+// Ubicaciones con paginación, búsqueda y filtro por tipo
 export async function getLocations(page: number = 1,name: string = "",type: string = ""): Promise<LocationResponse> {
   const response = await fetch(`${BASE_URL}/location?page=${page}&name=${name}&type=${type}`);
 

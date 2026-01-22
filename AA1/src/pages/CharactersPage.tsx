@@ -13,7 +13,7 @@ export default function CharactersPage() {
     const [sortOrder, setSortOrder] = useState<"asc" | "desc">("asc");
     const [statusFilter, setStatusFilter] = useState("");
 
-    useEffect(() => {
+    useEffect(() => { // Cuando cambia la búsqueda o el filtro vuelve a pedir datos a la API
         setLoading(true);
         getCharacters(1, searchTerm, statusFilter)
         .then((data) => {
@@ -27,6 +27,7 @@ export default function CharactersPage() {
         });
     }, [searchTerm, statusFilter]);
 
+    //Ordenación en storage
 const sortedCharacters = [...characters].sort((a, b) => {
     if (sortOrder === "asc") {
       return a.name.localeCompare(b.name);

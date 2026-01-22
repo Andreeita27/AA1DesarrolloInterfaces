@@ -2,14 +2,16 @@ import { useEffect, useState } from "react";
 
 export default function ThemeToggle() {
     const [isDark, setIsDark] = useState(() => {
+        // Lee el estado incial del localStorage
         const saved = localStorage.getItem("theme");
         return saved === "dark";
     });
 
+    // Cada vez que cambia isDark, actualzia body y storage
     useEffect(() => {
         if (isDark) {
-        document.body.classList.add("dark");
-        localStorage.setItem("theme", "dark");
+        document.body.classList.add("dark"); // activa variables css del modo oscuro
+        localStorage.setItem("theme", "dark"); // persiste
         } else {
         document.body.classList.remove("dark");
         localStorage.setItem("theme", "light");
